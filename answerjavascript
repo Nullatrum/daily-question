@@ -1,0 +1,54 @@
+<p><font size="4"><b> Your answer: </b>
+<!-- So this first line makes a paragraph, font equal to the size of 4 and bold
+to say "your answer" which, since it is inline, will override all the CSS. -->
+<script>
+<!-- This tag tells the html that the program is going to run in another language -->
+var qsParm = new Array();
+<!-- var declares a variable called 'qsParm'. Not sure what the new array section does but I assume it has to do with arrays -->
+qsParm['user-choice'] = 'none selected';
+  <!-- not sure what this part does either in particular, but I assume it has to do with arrays yet again since it uses brackets. -->
+function qs() {
+<!-- now a function called qs is being defined -->
+	var query = window.location.search.substring(1);
+	<!-- the function starts by defining a var called query, which is a bunch of other variables I'm not sure of -->
+	var parms = query.split('&');
+<!-- now the variable parms is defined equal to query.split('&'), again not sure what this function does however.-->
+	for (var i=0; i<parms.length; i++) {
+	<!-- now a for loop is made, with the variables meaning that it sets up a counter called i starting at 0, and will -->
+	<!-- keep going until it is <parms.length, meaning less than the length of the array, while increasing the counter i in increments -->
+		var pos = parms[i].indexOf('=');
+		<!-- so this loop starts by creating a variable called pos which is equal to the current spot of the array, .indexOf gives the number
+		<!-- of the item in the  array -->
+		if (pos > 0) {
+		<!--now a conditional if statement is given only for when the pos variable is greater than 0, meaning the answer was correct since
+		<!-- when the indexOf doesn't find a value in the array it returns a value of negative 1.-->
+			var key = parms[i].substring(0,pos);
+			<!-- the variable key is then defined which looks at the array parms in the ith part and does something called .substring -->
+			var val = parms[i].substring(pos+1);
+			<!-- the variable val is then set up equal to the array parms[i] and uses something again called .substring -->
+		qsParm[key] = val;
+		<!-- not sure what [key] is but the rest sets this up to have qsParm be equal to val defined a second ago.-->
+		}
+		<!-- this } closes the conditional if statement.-->
+	}
+	<!-- this } closes the for loop --> 
+} 
+<!-- and this } ends the function qs() -->
+  
+qs()
+<!-- calling the function qs-->
+qsParm['user-choice'] = qsParm['user-choice'].replace(/-/g, ' ');
+<!--putting up some strings and doing some things with arrays, I believe, because of the []'s-->
+if (qsParm['user-choice'])
+<!-- sets up a conditional statement only for while qsParm['user-choice'] (which I'm not sure what that does)-->
+  document.write(qsParm['user-choice']);
+  <!-- the text is then displayed vai the document.write function and it displays the 'user choice' string in qsParm (not sure again)-->
+  
+</script>
+<!-- ending the javascript portion -->
+<br><b> Correct answer: </b> It moves left
+<!-- The <br> breaks making a new line, <b> boldens correct answer and </b> closes the boldening, then displays the rest of the text.-->
+<input type="hidden" class="steps physics" value=3>  
+<!-- input tag is where the user can submit data, the class is called steps physics and it's given the value 3-->
+<hr>
+<!-- hr seperates content,making a line in many browsers, it's a self-closing tag -->
